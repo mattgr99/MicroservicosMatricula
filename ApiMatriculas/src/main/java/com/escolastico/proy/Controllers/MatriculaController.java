@@ -1,5 +1,6 @@
 package com.escolastico.proy.Controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class MatriculaController {
 	}
 	
 	@GetMapping("/")
-	public List<Matricula> list() {
+	public List<ResponseTemplateVO> list() {
 		return matriculaService.findAll();
 	}
 	

@@ -1,6 +1,8 @@
 package com.escolastico.proy.Services;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -81,8 +83,14 @@ public class MatriculaService {
 	
 	
 	
-	public List<Matricula> findAll() {		
-		return (List<Matricula>) matriculaRepository.findAll();
+	public List<ResponseTemplateVO> findAll() {		
+		List<Matricula> listabusqueda= new ArrayList();
+		List<ResponseTemplateVO> listareferencias= new ArrayList();
+		listabusqueda= matriculaRepository.findAll();
+		for (Matricula objeto: listabusqueda) {
+			listareferencias.add(getMatriculawithPagosandCurso(objeto.getMatriculaId()));
+		}
+		return  listareferencias;
 	}
 
 }
